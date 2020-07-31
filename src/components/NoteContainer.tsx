@@ -24,11 +24,13 @@ const NoteContainer: FC<Props>  = ({ noteId }) => {
   }, [noteId])
 
   useEffect(() => {
-    localStorage.setItem(noteId, JSON.stringify({
-      name: "Home",
-      value
-    }))
-  }, [value, noteId])
+    if(noteId && value) {
+      localStorage.setItem(noteId, JSON.stringify({
+        name: noteName,
+        value
+      }))
+    }
+  }, [value, noteId, noteName])
   
   return (
     <div className="note-container">
