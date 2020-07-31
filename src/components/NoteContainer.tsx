@@ -52,7 +52,7 @@ const NoteContainer: FC<Props>  = ({ noteId }) => {
           Preview
         </button>
       </div>
-      <h1>{noteName}</h1>
+      <h1 className="note-title">{noteName}</h1>
       {typingMode === "edit" ? (
         <div className="code-mirror-container">
           <CodeMirror

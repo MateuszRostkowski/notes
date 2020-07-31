@@ -27,16 +27,27 @@ code {
   padding: 0 20px;
 }
 
+.note-title {
+  font-size: 2.4em;
+}
+
 .sidebar-container {
   padding: 10px;
   padding-top: 50px;
   width: 200px;
-  background: red;
+  background: #f6efff;
   min-height: 100vh;
 }
 
 .sidebar-container--hidden {
   display: none;
+}
+
+.sidebar-container a {
+  color: #000070;
+  text-decoration: none;
+  margin: 6px 0;
+  text-transform: capitalize;
 }
 
 .sidebar-toggle {
