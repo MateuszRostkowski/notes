@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.code-mirror-container {
+  background: red;
+}
+div.CodeMirror {
+  background: transparent;
+}
+
+.mode-buttons-container {
+  display: flex;
+  width: 100%;
+  padding: 40px 0;
+  align-items: center;
+  justify-content: center;}
+
+.mode-button {
+  border: none;
+  padding: 10px;
+}
+
+.mode-button-active {
+  background: #66fa66;
+}

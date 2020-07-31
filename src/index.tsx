@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
