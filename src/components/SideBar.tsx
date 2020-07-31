@@ -53,6 +53,7 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
 function SideBar() {
   const [addMode, setAddMode] = useState(false);
   const [notesList, setNotesList] = useState([])
+  const [showNotesList, setShowNotesList] = useState(false);
 
   useEffect(() => {
     const list = getNotesList()
@@ -63,12 +64,12 @@ function SideBar() {
   const toggleMode = () => setAddMode(!addMode);
   return (
     <>
-      <div className="sidebar-toggle">
+      <div className="sidebar-toggle" onClick={() => setShowNotesList(!showNotesList)}>
         <span className="burger-line burger-line-1"></span>
         <span className="burger-line burger-line-1"></span>
         <span className="burger-line burger-line-1"></span>
       </div>
-      <div className="sidebar-container">
+      <div className={`sidebar-container${showNotesList ? " sidebar-container--hidden" : ""}`}>
         <a
           href="/"
           onClick={(e) => {

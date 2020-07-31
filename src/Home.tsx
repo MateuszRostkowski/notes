@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import NoteContainer from "./components/NoteContainer";
 import SideBar from "./components/SideBar";
 
@@ -13,6 +13,7 @@ function Home() {
   const { push } = useHistory()
 
   useEffect(() => {
+    document.title = noteId
     const list = getNotesList()
     
     if(!noteId && list.length > 0) {

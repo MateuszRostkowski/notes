@@ -29,10 +29,37 @@ code {
 
 .sidebar-container {
   padding: 10px;
+  padding-top: 50px;
   width: 200px;
   background: red;
   min-height: 100vh;
 }
+
+.sidebar-container--hidden {
+  display: none;
+}
+
+.sidebar-toggle {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  cursor: pointer;
+  left: 8px;
+  top: 8px;
+}
+
+.burger-line {
+  height: 4px;
+  border-radius: 10px;
+  width: 30px;
+  background: black;
+  margin-bottom: 4px;
+}
+
+.burger-line-1 {
+
+}
+
 
 .add-note-wrappper {
   position: fixed;
