@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ReactNotesApp/static/css/main.97a3fc83.chunk.css",
+    "main.css": "/ReactNotesApp/static/css/main.075b2630.chunk.css",
     "main.js": "/ReactNotesApp/static/js/main.8ab5aa33.chunk.js",
     "main.js.map": "/ReactNotesApp/static/js/main.8ab5aa33.chunk.js.map",
     "runtime-main.js": "/ReactNotesApp/static/js/runtime-main.f39132f1.js",
@@ -9,17 +9,17 @@
     "static/js/2.d12bcb43.chunk.js": "/ReactNotesApp/static/js/2.d12bcb43.chunk.js",
     "static/js/2.d12bcb43.chunk.js.map": "/ReactNotesApp/static/js/2.d12bcb43.chunk.js.map",
     "index.html": "/ReactNotesApp/index.html",
-    "precache-manifest.f8696d3bc0b82cb478e1e1a95e47c1a5.js": "/ReactNotesApp/precache-manifest.f8696d3bc0b82cb478e1e1a95e47c1a5.js",
+    "precache-manifest.d632e5157a43e6006b3647a689d168c4.js": "/ReactNotesApp/precache-manifest.d632e5157a43e6006b3647a689d168c4.js",
     "service-worker.js": "/ReactNotesApp/service-worker.js",
     "static/css/2.ff29e27e.chunk.css.map": "/ReactNotesApp/static/css/2.ff29e27e.chunk.css.map",
-    "static/css/main.97a3fc83.chunk.css.map": "/ReactNotesApp/static/css/main.97a3fc83.chunk.css.map",
+    "static/css/main.075b2630.chunk.css.map": "/ReactNotesApp/static/css/main.075b2630.chunk.css.map",
     "static/js/2.d12bcb43.chunk.js.LICENSE.txt": "/ReactNotesApp/static/js/2.d12bcb43.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f39132f1.js",
     "static/css/2.ff29e27e.chunk.css",
     "static/js/2.d12bcb43.chunk.js",
-    "static/css/main.97a3fc83.chunk.css",
+    "static/css/main.075b2630.chunk.css",
     "static/js/main.8ab5aa33.chunk.js"
   ]
 }
