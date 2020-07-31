@@ -22,8 +22,9 @@ code {
 
 .note-container {
   max-width: 800px;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .sidebar-container {
@@ -53,9 +54,12 @@ code {
 }
 
 .add-note-container {
+  padding: 20px;
+  display: flex;
   position: relative;
   z-index: 102;
   background: #eee;
+  flex-direction: column;
 }
 
 .links-container {
@@ -63,15 +67,11 @@ code {
   flex-direction: column;
 }
 
-.note-container {
-  max-width: 800px;
-  width: 90%;
-  margin: 0 auto;
-}
 
 div.CodeMirror {
   background: transparent;
-  height: auto;
+  height: calc(100vh - 200px);
+  cursor: text;
 }
 
 .mode-buttons-container {
