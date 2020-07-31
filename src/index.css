@@ -13,7 +13,7 @@ code {
 }
 
 .code-mirror-container {
-  background: red;
+  background: #eee;
 }
 div.CodeMirror {
   background: transparent;

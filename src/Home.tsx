@@ -4,7 +4,9 @@ import ReactMarkdown from "react-markdown/with-html";
 
 const NOTE_KEY = "note_id"
 
-const options = {};
+const options = {
+  mode: "markdown"
+};
 
 function Home() {
   const [value, setValue] = useState("");
@@ -26,19 +28,19 @@ function Home() {
       <div className="mode-buttons-container">
         <button
           className={`mode-button${
-            typingMode === "preview" ? " mode-button-active" : ""
-          }`}
-          onClick={() => setTypingMode("preview")}
-        >
-          Preview
-        </button>
-        <button
-          className={`mode-button${
             typingMode === "edit" ? " mode-button-active" : ""
           }`}
           onClick={() => setTypingMode("edit")}
         >
           Edit
+        </button>
+        <button
+          className={`mode-button${
+            typingMode === "preview" ? " mode-button-active" : ""
+          }`}
+          onClick={() => setTypingMode("preview")}
+        >
+          Preview
         </button>
       </div>
       {typingMode === "edit" ? (
