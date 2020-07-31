@@ -12,6 +12,7 @@ export default function App() {
     <Router>
       <div>
         <Switch>
+          <Route path="/:noteId" children={<Home />} />
           <Route path="/">
             <Home />
           </Route>
