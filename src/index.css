@@ -110,6 +110,7 @@ div.CodeMirror {
   background: transparent;
   height: calc(100vh - 200px);
   cursor: text;
+  position: relative;
 }
 
 .mode-buttons-container {
