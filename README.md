@@ -1,4 +1,4 @@
-# TicTacToe [Live Preview](https://mateuszrostkowski.github.io/ReactNotesApp/)
+# Notes App [Live Preview](https://mateuszrostkowski.github.io/ReactNotesApp/)
 
 It's a simple notes app created with react
 
