@@ -11,7 +11,7 @@ const options = {
 };
 
 const NoteContainer: FC<Props>  = ({ noteId }) => {
-  const [typingMode, setTypingMode] = useState<"preview" | "edit">("edit");
+  const [typingMode, setTypingMode] = useState<"preview" | "edit" | "both">("edit");
   const [value, setValue] = useState("");
   const [noteName, setNoteName] = useState("")
 
@@ -33,7 +33,7 @@ const NoteContainer: FC<Props>  = ({ noteId }) => {
   }, [value, noteId, noteName])
   
   return (
-    <div className="note-container">
+    <div className={`note-wrapper${typingMode === 'both' ? " note-wrapper--both" : ""}`}>
       <div className="mode-buttons-container">
         <button
           className={`mode-button${
@@ -51,23 +51,34 @@ const NoteContainer: FC<Props>  = ({ noteId }) => {
         >
           Preview
         </button>
+        <button
+          className={`mode-button${
+            typingMode === "both" ? " mode-button-active" : ""
+          }`}
+          onClick={() => setTypingMode("both")}
+        >
+          Both
+        </button>
       </div>
       <h1 className="note-title">{noteName}</h1>
-      {typingMode === "edit" ? (
-        <div className="code-mirror-container">
-          <CodeMirror
-            value={value}
-            options={options}
-            onBeforeChange={(editor, data, value) => {
-              setValue(value);
-            }}
-          />
-        </div>
-      ) : (
-        <div className="react-markdown-container">
-          <ReactMarkdown source={value} escapeHtml={false} />
-        </div>
-      )}
+      <div className="note-container">
+        {(typingMode === "edit" || typingMode === 'both') && (
+          <div className="code-mirror-container">
+            <CodeMirror
+              value={value}
+              options={options}
+              onBeforeChange={(editor, data, value) => {
+                setValue(value);
+              }}
+              />
+          </div>
+        )}
+        {(typingMode === 'preview' || typingMode === 'both') && (
+          <div className="react-markdown-container">
+            <ReactMarkdown source={value} escapeHtml={false} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

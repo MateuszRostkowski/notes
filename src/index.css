@@ -20,15 +20,45 @@ code {
   display: flex;
 }
 
-.note-container {
+.note-wrapper {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
 
+.note-wrapper--both {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.note-container {
+  display: flex;
+  flex-direction: row;
+}
+
+
 .note-title {
   font-size: 2.4em;
+  padding-left: 20px;
+}
+
+.note-wrapper--both .react-markdown-container {
+  padding: 0 20px;
+  width: 50%;
+}
+
+.code-mirror-container, .react-markdown-container {
+  overflow-wrap: break-word;
+  width: 100%;
+}
+
+.note-wrapper--both .code-mirror-container {
+  width: 50%;
+  padding: 0 20px;
+  border-right-color: #e6e6e6;
+  border-right-style: solid;
+  border-right-width: 1px;
 }
 
 .sidebar-container {
@@ -66,11 +96,6 @@ code {
   background: black;
   margin-bottom: 4px;
 }
-
-.burger-line-1 {
-
-}
-
 
 .add-note-wrappper {
   position: fixed;
