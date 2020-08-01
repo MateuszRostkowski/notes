@@ -1,15 +1,14 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Home from "./Home";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/">
       <div>
         <Switch>
           <Route path="/:noteId" children={<Home />} />
