@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "47a89c1852e3bd5be975937a151dea0d",
+    "revision": "f7b5bf82987b74645f715c8f95420923",
     "url": "/ReactNotesApp/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ReactNotesApp/static/css/2.ff29e27e.chunk.css"
   },
   {
-    "revision": "3004b43de26fa5166a2d",
-    "url": "/ReactNotesApp/static/css/main.67959c21.chunk.css"
+    "revision": "f78183bb679121998af5",
+    "url": "/ReactNotesApp/static/css/main.4229d3b0.chunk.css"
   },
   {
     "revision": "ff1c563989613133b4ae",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ReactNotesApp/static/js/2.091d5254.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3004b43de26fa5166a2d",
-    "url": "/ReactNotesApp/static/js/main.a31e620a.chunk.js"
+    "revision": "f78183bb679121998af5",
+    "url": "/ReactNotesApp/static/js/main.80e92b2d.chunk.js"
   },
   {
     "revision": "55ccaed39ac219899b61",

@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ReactNotesApp/static/css/main.67959c21.chunk.css",
-    "main.js": "/ReactNotesApp/static/js/main.a31e620a.chunk.js",
-    "main.js.map": "/ReactNotesApp/static/js/main.a31e620a.chunk.js.map",
+    "main.css": "/ReactNotesApp/static/css/main.4229d3b0.chunk.css",
+    "main.js": "/ReactNotesApp/static/js/main.80e92b2d.chunk.js",
+    "main.js.map": "/ReactNotesApp/static/js/main.80e92b2d.chunk.js.map",
     "runtime-main.js": "/ReactNotesApp/static/js/runtime-main.f39132f1.js",
     "runtime-main.js.map": "/ReactNotesApp/static/js/runtime-main.f39132f1.js.map",
     "static/css/2.ff29e27e.chunk.css": "/ReactNotesApp/static/css/2.ff29e27e.chunk.css",
     "static/js/2.091d5254.chunk.js": "/ReactNotesApp/static/js/2.091d5254.chunk.js",
     "static/js/2.091d5254.chunk.js.map": "/ReactNotesApp/static/js/2.091d5254.chunk.js.map",
     "index.html": "/ReactNotesApp/index.html",
-    "precache-manifest.24d621f4e03a27ede4942c9e5bd903a0.js": "/ReactNotesApp/precache-manifest.24d621f4e03a27ede4942c9e5bd903a0.js",
+    "precache-manifest.39dd174c551c94b062bd3ddf319c8233.js": "/ReactNotesApp/precache-manifest.39dd174c551c94b062bd3ddf319c8233.js",
     "service-worker.js": "/ReactNotesApp/service-worker.js",
     "static/css/2.ff29e27e.chunk.css.map": "/ReactNotesApp/static/css/2.ff29e27e.chunk.css.map",
-    "static/css/main.67959c21.chunk.css.map": "/ReactNotesApp/static/css/main.67959c21.chunk.css.map",
+    "static/css/main.4229d3b0.chunk.css.map": "/ReactNotesApp/static/css/main.4229d3b0.chunk.css.map",
     "static/js/2.091d5254.chunk.js.LICENSE.txt": "/ReactNotesApp/static/js/2.091d5254.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f39132f1.js",
     "static/css/2.ff29e27e.chunk.css",
     "static/js/2.091d5254.chunk.js",
-    "static/css/main.67959c21.chunk.css",
-    "static/js/main.a31e620a.chunk.js"
+    "static/css/main.4229d3b0.chunk.css",
+    "static/js/main.80e92b2d.chunk.js"
   ]
 }
