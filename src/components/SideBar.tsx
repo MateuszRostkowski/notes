@@ -16,6 +16,11 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
       toggleMode()
       return 
     }
+
+    if(name === NOTE_LIST_KEY) {
+      alert("this name is not allowed")
+      return
+    }
     const list = getNotesList()
     const newNote: ListNoteItem = {
       name

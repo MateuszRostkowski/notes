@@ -132,6 +132,7 @@ code {
 
 
 div.CodeMirror {
+  position: relative;
   background: transparent;
   height: calc(100vh - 200px);
   cursor: text;
