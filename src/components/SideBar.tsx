@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import getNotesList, { NOTE_LIST_KEY } from "../helpers/getNotesList";
 import { ListNoteItem } from "../helpers/interfaces";
+import { TYPING_MODE_KEY } from "./NoteContainer";
 
 interface AddNoteProps {
   toggleMode: () => void;
@@ -17,7 +18,7 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
       return 
     }
 
-    if(name === NOTE_LIST_KEY) {
+    if(name === NOTE_LIST_KEY || name === TYPING_MODE_KEY) {
       alert("this name is not allowed")
       return
     }
