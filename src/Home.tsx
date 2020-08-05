@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NoteContainer from "./components/NoteContainer";
 import SideBar from "./components/SideBar";
 
@@ -30,7 +30,7 @@ function Home() {
   return (
     <div className="home-container">
       <SideBar />
-      {!isError ? <NoteContainer noteId={noteId} /> : <Error />}
+      {!isError ? <NoteContainer key={noteId} noteId={noteId} /> : <Error />}
     </div>
   );
 }
