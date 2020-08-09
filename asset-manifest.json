@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ReactNotesApp/static/css/main.4229d3b0.chunk.css",
-    "main.js": "/ReactNotesApp/static/js/main.80e92b2d.chunk.js",
-    "main.js.map": "/ReactNotesApp/static/js/main.80e92b2d.chunk.js.map",
+    "main.css": "/ReactNotesApp/static/css/main.5477e405.chunk.css",
+    "main.js": "/ReactNotesApp/static/js/main.8e3f70d8.chunk.js",
+    "main.js.map": "/ReactNotesApp/static/js/main.8e3f70d8.chunk.js.map",
     "runtime-main.js": "/ReactNotesApp/static/js/runtime-main.f39132f1.js",
     "runtime-main.js.map": "/ReactNotesApp/static/js/runtime-main.f39132f1.js.map",
     "static/css/2.ff29e27e.chunk.css": "/ReactNotesApp/static/css/2.ff29e27e.chunk.css",
-    "static/js/2.091d5254.chunk.js": "/ReactNotesApp/static/js/2.091d5254.chunk.js",
-    "static/js/2.091d5254.chunk.js.map": "/ReactNotesApp/static/js/2.091d5254.chunk.js.map",
+    "static/js/2.0e3c67a3.chunk.js": "/ReactNotesApp/static/js/2.0e3c67a3.chunk.js",
+    "static/js/2.0e3c67a3.chunk.js.map": "/ReactNotesApp/static/js/2.0e3c67a3.chunk.js.map",
     "index.html": "/ReactNotesApp/index.html",
-    "precache-manifest.39dd174c551c94b062bd3ddf319c8233.js": "/ReactNotesApp/precache-manifest.39dd174c551c94b062bd3ddf319c8233.js",
+    "precache-manifest.b034cbc3a524aae31a7e18d79ee3e60a.js": "/ReactNotesApp/precache-manifest.b034cbc3a524aae31a7e18d79ee3e60a.js",
     "service-worker.js": "/ReactNotesApp/service-worker.js",
     "static/css/2.ff29e27e.chunk.css.map": "/ReactNotesApp/static/css/2.ff29e27e.chunk.css.map",
-    "static/css/main.4229d3b0.chunk.css.map": "/ReactNotesApp/static/css/main.4229d3b0.chunk.css.map",
-    "static/js/2.091d5254.chunk.js.LICENSE.txt": "/ReactNotesApp/static/js/2.091d5254.chunk.js.LICENSE.txt"
+    "static/css/main.5477e405.chunk.css.map": "/ReactNotesApp/static/css/main.5477e405.chunk.css.map",
+    "static/js/2.0e3c67a3.chunk.js.LICENSE.txt": "/ReactNotesApp/static/js/2.0e3c67a3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f39132f1.js",
     "static/css/2.ff29e27e.chunk.css",
-    "static/js/2.091d5254.chunk.js",
-    "static/css/main.4229d3b0.chunk.css",
-    "static/js/main.80e92b2d.chunk.js"
+    "static/js/2.0e3c67a3.chunk.js",
+    "static/css/main.5477e405.chunk.css",
+    "static/js/main.8e3f70d8.chunk.js"
   ]
 }
