@@ -20,6 +20,12 @@ code {
   display: flex;
 }
 
+.note {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 .note-wrapper {
   max-width: 800px;
   width: 100%;
@@ -134,9 +140,18 @@ code {
 div.CodeMirror {
   position: relative;
   background: transparent;
-  height: calc(100vh - 200px);
+  height: auto;
+  min-height: calc(100vh - 200px);
   cursor: text;
   position: relative;
+  padding-bottom: 30px;
+  font-size: 16px;
+}
+
+.hljs {
+  padding: 1em;  
+  border-radius: 4px;
+  padding: 12px;
 }
 
 .mode-buttons-container {
@@ -226,22 +241,6 @@ div.CodeMirror {
   font-size: 1.25em;
   margin: 0;
   padding: 10px 0 0 0;
-}
-
-.CodeMirror {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: auto;
-  height: auto;
-
-  font-size: 16px;
-}
-
-pre {
-  border: 1px solid #ccc;
 }
 
 blockquote {
