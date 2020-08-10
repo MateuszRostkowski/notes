@@ -74,20 +74,31 @@ div#modal-root.shown {
   border-right-width: 1px;
 }
 
-.sidebar-container {
-  padding: 10px;
-  padding-top: 50px;
+.sidebar-wrapper {
+  overflow: hidden;
   width: 200px;
-  background: #f6efff;
+  background: #f7f6f3;
   min-height: 100vh;
+  transition: width 200ms;
 }
 
-.sidebar-container--hidden {
+.sidebar-wrapper-enter-done {
+  width: 0px;
   display: none;
 }
 
+.sidebar-wrapper-exit,
+.sidebar-wrapper-enter-active {
+  width: 0px;
+}
+
+.sidebar-container {
+  padding: 10px;
+  padding-top: 50px;
+}
+
 .sidebar-container a {
-  color: #000070;
+  color: #060620;
   text-decoration: none;
   margin: 6px 0;
   text-transform: capitalize;
