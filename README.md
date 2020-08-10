@@ -9,13 +9,13 @@ To run it in local environment follow these steps:
 1. Clone/Download the code from this repository
 
 ```bash
-git clone https://github.com/MateuszRostkowski/ReactNotesApp.git
+git clone https://github.com/MateuszRostkowski/notes.git
 ```
 
 2. Install dependencies 
 
 ```bash
-cd TicTacToe
+cd notes
 yarn install
 ```
 
