@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import getNotesList, { NOTE_LIST_KEY } from "../helpers/getNotesList";
 import { ListNoteItem } from "../helpers/interfaces";
 import { TYPING_MODE_KEY } from "./NoteContainer";
+import { Modal } from "./Modal";
 
 interface AddNoteProps {
   toggleMode: () => void;
@@ -37,22 +38,24 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
   }
 
   return (
-    <div className="add-note-wrappper">
-      <div className="add-note-container">
-        <a
-          href="/"
-          onClick={(e) => {
-            e.preventDefault();
-            toggleMode();
-          }}
-        >
-          Close
-        </a>
-        <input value={name} onChange={(e) => setName(e.target.value)}/>
-        <button onClick={handleAddNote}>Add new note</button>
+    <Modal>
+      <div className="add-note-wrappper">
+        <div className="add-note-container">
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              toggleMode();
+            }}
+            >
+            Close
+          </a>
+          <input value={name} onChange={(e) => setName(e.target.value)}/>
+          <button onClick={handleAddNote}>Add new note</button>
+        </div>
+        <div onClick={toggleMode} className="add-note-background"></div>
       </div>
-      <div onClick={toggleMode} className="add-note-background"></div>
-    </div>
+    </Modal>
   );
 };
 
@@ -83,7 +86,7 @@ function SideBar() {
             toggleMode();
           }}
         >
-          Dodaj listę
+          Dodaj notatkę
         </a>
         <h1>Notes app</h1>
         <div className="links-container">
