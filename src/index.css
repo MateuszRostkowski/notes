@@ -160,11 +160,15 @@ div.CodeMirror {
   position: relative;
   background: transparent;
   height: auto;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 300px);
   cursor: text;
   position: relative;
   padding-bottom: 30px;
   font-size: 16px;
+}
+
+.CodeMirror-scroll {
+  min-height: calc(100vh - 350px);
 }
 
 .hljs {
