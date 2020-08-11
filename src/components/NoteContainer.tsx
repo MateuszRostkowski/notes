@@ -100,7 +100,7 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
             </div>
           )}
           {(typingMode === "preview" || typingMode === "both") && (
-            <div className="react-markdown-container">
+            <div className="react-markdown-container markdown-body">
               <ReactMarkdown renderers={{ code: CodeBlock }} source={value} escapeHtml={false} />
             </div>
           )}
