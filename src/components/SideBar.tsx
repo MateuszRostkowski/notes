@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import getNotesList from "../helpers/getNotesList";
 import { ListNoteItem } from "../helpers/interfaces";
 import AddNote from "./AddNote";
@@ -9,7 +9,7 @@ function SideBar() {
   const [addMode, setAddMode] = useState(false);
   const [notesList, setNotesList] = useState([]);
   const [showNotesList, setShowNotesList] = useState(false);
-
+  const { noteId } = useParams();
   useEffect(() => {
     const list = getNotesList();
     setNotesList(list);
@@ -33,6 +33,7 @@ function SideBar() {
       >
         <div className="sidebar-wrapper">
           <div className="sidebar-container">
+            <h1>Notes app</h1>
             <a
               href="/"
               onClick={(e) => {
@@ -40,13 +41,16 @@ function SideBar() {
                 toggleMode();
               }}
             >
-              Dodaj notatkę
+              Add note
             </a>
-            <h1>Notes app</h1>
             <div className="links-container">
               {notesList.map((item: ListNoteItem, index: number) => {
                 return (
-                  <Link key={index} to={`/${item.name}`}>
+                  <Link
+                    key={index}
+                    to={`/${item.name}`}
+                    className={noteId === item.name ? "active-item" : ""}
+                  >
                     {item.name}
                   </Link>
                 );

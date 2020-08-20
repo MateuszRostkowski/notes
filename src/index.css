@@ -4,15 +4,15 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -50,7 +50,6 @@ div#modal-root.shown {
   flex-direction: row;
 }
 
-
 .note-title {
   font-size: 2.4em;
   padding-left: 20px;
@@ -61,7 +60,8 @@ div#modal-root.shown {
   width: 50%;
 }
 
-.code-mirror-container, .react-markdown-container {
+.code-mirror-container,
+.react-markdown-container {
   overflow-wrap: break-word;
   width: 100%;
 }
@@ -100,7 +100,6 @@ div#modal-root.shown {
 .sidebar-container a {
   color: #060620;
   text-decoration: none;
-  margin: 6px 0;
   text-transform: capitalize;
 }
 
@@ -155,7 +154,6 @@ div#modal-root.shown {
   flex-direction: column;
 }
 
-
 div.CodeMirror {
   position: relative;
   background: transparent;
@@ -172,7 +170,7 @@ div.CodeMirror {
 }
 
 .hljs {
-  padding: 1em;  
+  padding: 1em;
   border-radius: 4px;
   padding: 12px;
 }
@@ -182,7 +180,8 @@ div.CodeMirror {
   width: 100%;
   padding: 40px 0;
   align-items: center;
-  justify-content: center;}
+  justify-content: center;
+}
 
 .mode-button {
   background: #f2f2f2;
@@ -232,7 +231,8 @@ div.CodeMirror {
   padding: 10px;
   padding-left: 20px;
   color: #444;
-  font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+  font-family: Georgia, Palatino, "Palatino Linotype", Times, "Times New Roman",
+    serif;
   font-size: 16px;
   line-height: 1.5em;
 }
@@ -308,7 +308,88 @@ table tr:nth-child(2n) {
   padding: 10px;
 }
 
-
 .add-new-info--shown {
   opacity: 1;
+}
+
+h1.note-title {
+  padding-left: 0;
+}
+
+button.mode-button.mode-button-active {
+  background: #05337a;
+  color: white;
+}
+
+.mode-button {
+  padding: 8px 18px;
+  border: 1px solid #05337a;
+  font-weight: bold;
+  color: #05337a;
+  background: transparent;
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(5, 51, 122, 1);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(5, 51, 122, 1);
+  box-shadow: 0px 0px 6px 0px rgba(5, 51, 122, 0.25);
+}
+
+.mode-button:focus {
+  outline: none;
+}
+
+.sidebar-container > a {
+  padding: 8px 13px;
+  font-weight: bold;
+  color: #05337a;
+  border-radius: 4px;
+  background: white;
+}
+
+.sidebar-wrapper {
+  background: #05337a;
+  flex: 1;
+  /* display: flex; */
+  flex-basis: 245px;
+}
+
+.sidebar-container h1 {
+  color: white;
+}
+
+.sidebar-toggle {
+  top: 20px;
+  left: 20px;
+}
+
+span.burger-line {
+  background: white;
+}
+
+.sidebar-container {
+  padding: 50px 20px 20px;
+}
+
+.links-container {
+  margin-top: 50px;
+  border-bottom: 1px solid white;
+}
+
+.links-container a {
+  color: white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.links-container a:first-child {
+  border-bottom: none;
+}
+
+.links-container a:last-child {
+  border-bottom: none;
+}
+
+.links-container a:hover,
+.active-item {
+  background: #00000017;
 }
