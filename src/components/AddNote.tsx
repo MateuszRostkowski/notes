@@ -10,32 +10,35 @@ interface AddNoteProps {
 }
 
 const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
-  const { push } = useHistory()
-  const [name, setName] = useState("")
+  const { push } = useHistory();
+  const [name, setName] = useState("");
 
   const handleAddNote = () => {
-    if(!name) {
-      toggleMode()
-      return 
+    if (!name) {
+      toggleMode();
+      return;
     }
 
-    if(name === NOTE_LIST_KEY || name === TYPING_MODE_KEY) {
-      alert("this name is not allowed")
-      return
+    if (name === NOTE_LIST_KEY || name === TYPING_MODE_KEY) {
+      alert("this name is not allowed");
+      return;
     }
-    const list = getNotesList()
+    const list = getNotesList();
     const newNote: ListNoteItem = {
-      name
-    }
-    const newList = [newNote, ...list]
-    localStorage.setItem(name, JSON.stringify({
       name,
-      value: ""
-    }))
-    localStorage.setItem(NOTE_LIST_KEY, JSON.stringify(newList))
-    push(`/${name}`)
-    toggleMode()
-  }
+    };
+    const newList = [newNote, ...list];
+    localStorage.setItem(
+      name,
+      JSON.stringify({
+        name,
+        value: "",
+      })
+    );
+    localStorage.setItem(NOTE_LIST_KEY, JSON.stringify(newList));
+    push(`/${name}`);
+    toggleMode();
+  };
 
   return (
     <Modal>
@@ -47,11 +50,13 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
               e.preventDefault();
               toggleMode();
             }}
-            >
+          >
             Close
           </a>
-          <input value={name} onChange={(e) => setName(e.target.value)}/>
-          <button onClick={handleAddNote}>Add new note</button>
+          <input value={name} onChange={(e) => setName(e.target.value)} />
+          <button className="button" onClick={handleAddNote}>
+            Add new note
+          </button>
         </div>
         <div onClick={toggleMode} className="add-note-background"></div>
       </div>
@@ -59,4 +64,4 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
   );
 };
 
-export default AddNote
+export default AddNote;
