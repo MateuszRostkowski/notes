@@ -1,22 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./styles/index.css";
-import "./styles/gh-markdown.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './styles/index.css';
+import './styles/gh-markdown.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-import "codemirror/lib/codemirror.css";
-import "codemirror/theme/material.css";
-import "codemirror/theme/neat.css";
-import "codemirror/mode/xml/xml.js";
-import "codemirror/mode/markdown/markdown.js";
-import "codemirror/mode/javascript/javascript.js";
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
+import 'codemirror/theme/neat.css';
+import 'codemirror/mode/xml/xml.js';
+import 'codemirror/mode/markdown/markdown.js';
+import 'codemirror/mode/javascript/javascript.js';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

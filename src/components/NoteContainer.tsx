@@ -1,33 +1,33 @@
-import React, { FC, useState, useEffect } from "react";
-import { Controlled as CodeMirror } from "react-codemirror2";
-import ReactMarkdown from "react-markdown/with-html";
-import CodeBlock from "./CodeBlock";
+import React, { FC, useState, useEffect } from 'react';
+import { Controlled as CodeMirror } from 'react-codemirror2';
+import ReactMarkdown from 'react-markdown/with-html';
+import CodeBlock from './CodeBlock';
 
-export const TYPING_MODE_KEY = "typing_mode";
+export const TYPING_MODE_KEY = 'typing_mode';
 
 interface Props {
   noteId: string;
 }
 
 const options = {
-  mode: "markdown",
+  mode: 'markdown',
   autofocus: true,
 };
 
 const NoteContainer: FC<Props> = ({ noteId }) => {
   const locaStorageTypingMode = localStorage.getItem(TYPING_MODE_KEY);
   const initialType =
-    locaStorageTypingMode === "preview"
-      ? "preview"
-      : locaStorageTypingMode === "edit"
-      ? "edit"
-      : "both";
+    locaStorageTypingMode === 'preview'
+      ? 'preview'
+      : locaStorageTypingMode === 'edit'
+      ? 'edit'
+      : 'both';
 
-  const [typingMode, setTypingMode] = useState<"preview" | "edit" | "both">(
-    initialType
+  const [typingMode, setTypingMode] = useState<'preview' | 'edit' | 'both'>(
+    initialType,
   );
-  const [value, setValue] = useState("");
-  const [noteName, setNoteName] = useState("");
+  const [value, setValue] = useState('');
+  const [noteName, setNoteName] = useState('');
 
   useEffect(() => {
     localStorage.setItem(TYPING_MODE_KEY, typingMode);
@@ -48,7 +48,7 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
         JSON.stringify({
           name: noteName,
           value,
-        })
+        }),
       );
     }
   }, [value, noteId, noteName]);
@@ -57,38 +57,34 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
     <div className="note">
       <div
         className={`note-wrapper${
-          typingMode === "both" ? " note-wrapper--both" : ""
-        }`}
-      >
+          typingMode === 'both' ? ' note-wrapper--both' : ''
+        }`}>
         <div className="mode-buttons-container">
           <button
             className={`mode-button${
-              typingMode === "edit" ? " mode-button-active" : ""
+              typingMode === 'edit' ? ' mode-button-active' : ''
             }`}
-            onClick={() => setTypingMode("edit")}
-          >
+            onClick={() => setTypingMode('edit')}>
             Edit
           </button>
           <button
             className={`mode-button${
-              typingMode === "preview" ? " mode-button-active" : ""
+              typingMode === 'preview' ? ' mode-button-active' : ''
             }`}
-            onClick={() => setTypingMode("preview")}
-          >
+            onClick={() => setTypingMode('preview')}>
             Preview
           </button>
           <button
             className={`mode-button${
-              typingMode === "both" ? " mode-button-active" : ""
+              typingMode === 'both' ? ' mode-button-active' : ''
             }`}
-            onClick={() => setTypingMode("both")}
-          >
+            onClick={() => setTypingMode('both')}>
             Both
           </button>
         </div>
         <h1 className="note-title">{noteName}</h1>
         <div className="note-container">
-          {(typingMode === "edit" || typingMode === "both") && (
+          {(typingMode === 'edit' || typingMode === 'both') && (
             <div className="code-mirror-container">
               <CodeMirror
                 value={value}
@@ -99,9 +95,13 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
               />
             </div>
           )}
-          {(typingMode === "preview" || typingMode === "both") && (
+          {(typingMode === 'preview' || typingMode === 'both') && (
             <div className="react-markdown-container markdown-body">
-              <ReactMarkdown renderers={{ code: CodeBlock }} source={value} escapeHtml={false} />
+              <ReactMarkdown
+                renderers={{ code: CodeBlock }}
+                source={value}
+                escapeHtml={false}
+              />
             </div>
           )}
         </div>

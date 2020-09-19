@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import Highlight from "react-highlight.js";
+import Highlight from 'react-highlight.js';
 
 interface Props {
   value: string;
