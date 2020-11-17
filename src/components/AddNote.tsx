@@ -1,9 +1,9 @@
-import React, { FC, useState } from "react";
-import { useHistory } from "react-router-dom";
-import getNotesList, { NOTE_LIST_KEY } from "../helpers/getNotesList";
-import { ListNoteItem } from "../helpers/interfaces";
-import { TYPING_MODE_KEY } from "./NoteContainer";
-import { Modal } from "./Modal";
+import React, { FC, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import getNotesList, { NOTE_LIST_KEY } from '../helpers/getNotesList';
+import { ListNoteItem } from '../helpers/interfaces';
+import { TYPING_MODE_KEY } from './NoteContainer';
+import { Modal } from './Modal';
 
 interface AddNoteProps {
   toggleMode: () => void;
@@ -11,7 +11,7 @@ interface AddNoteProps {
 
 const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
   const { push } = useHistory();
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   const handleAddNote = () => {
     if (!name) {
@@ -20,7 +20,7 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
     }
 
     if (name === NOTE_LIST_KEY || name === TYPING_MODE_KEY) {
-      alert("this name is not allowed");
+      alert('this name is not allowed');
       return;
     }
     const list = getNotesList();
@@ -32,8 +32,8 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
       name,
       JSON.stringify({
         name,
-        value: "",
-      })
+        value: '',
+      }),
     );
     localStorage.setItem(NOTE_LIST_KEY, JSON.stringify(newList));
     push(`/${name}`);
@@ -46,14 +46,13 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
         <div className="add-note-container">
           <a
             href="/"
-            onClick={(e) => {
+            onClick={e => {
               e.preventDefault();
               toggleMode();
-            }}
-          >
+            }}>
             Close
           </a>
-          <input value={name} onChange={(e) => setName(e.target.value)} />
+          <input value={name} onChange={e => setName(e.target.value)} />
           <button className="button" onClick={handleAddNote}>
             Add new note
           </button>

@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from "react";
-import NoteContainer from "./components/NoteContainer";
-import SideBar from "./components/SideBar";
+import React, { useEffect, useState } from 'react';
+import NoteContainer from './components/NoteContainer';
+import SideBar from './components/SideBar';
 
-import { useParams, useHistory } from "react-router-dom";
-import getNotesList from "./helpers/getNotesList";
-import Error from "./components/Error";
-import { ListNoteItem } from "./helpers/interfaces";
-import Empty from "./components/Empty";
+import { useParams, useHistory } from 'react-router-dom';
+import getNotesList from './helpers/getNotesList';
+import Error from './components/Error';
+import { ListNoteItem } from './helpers/interfaces';
+import Empty from './components/Empty';
 
 function Home() {
-  const [isError, setIsError] = useState(false)
-  const [isEmpty, setIsEmpty] = useState(false)
-  const { noteId } = useParams()
-  const { push } = useHistory()
+  const [isError, setIsError] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false);
+  const { noteId } = useParams();
+  const { push } = useHistory();
 
   useEffect(() => {
-    document.title = noteId || "notes"
-    const list = getNotesList()
-    
-    if(!list || list.length === 0) {
-      setIsEmpty(true)
-    } else {     
-      setIsEmpty(false) 
-      if(!noteId && list.length > 0) {
-        push(`/${list[0].name}`)
+    document.title = noteId || 'notes';
+    const list = getNotesList();
+
+    if (!list || list.length === 0) {
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
+      if (!noteId && list.length > 0) {
+        push(`/${list[0].name}`);
       }
-      
-      if(list.some((item: ListNoteItem) => item.name === noteId)) {
-        setIsError(false)
+
+      if (list.some((item: ListNoteItem) => item.name === noteId)) {
+        setIsError(false);
       } else {
-        setIsError(true)
+        setIsError(true);
       }
     }
-  }, [noteId, push])
+  }, [noteId, push]);
 
   return (
     <div className="home-container">
