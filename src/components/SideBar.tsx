@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import getNotesList from '../helpers/getNotesList';
 import { ListNoteItem } from '../helpers/interfaces';
