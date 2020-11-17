@@ -10,9 +10,27 @@ interface Props {
   noteId: string;
 }
 
+const generateKeySelection = (cm: any, prefix: string) => {
+  const selection = cm.getSelection();
+
+  if (selection.length > 0) {
+    const match =
+      `${selection.slice(0, 2)}${selection.slice(-2)}` === prefix + prefix;
+    if (match) {
+      cm.replaceSelection(`${selection.slice(2).slice(0, -2)}`);
+    } else {
+      cm.replaceSelection(`${prefix}${selection}${prefix}`);
+    }
+  }
+};
+
 const options = {
   mode: 'markdown',
   autofocus: true,
+  extraKeys: {
+    'Cmd-B': (cm: any) => generateKeySelection(cm, '**'),
+    'Cmd-I': (cm: any) => generateKeySelection(cm, '*'),
+  },
 };
 
 const NoteContainer: FC<Props> = ({ noteId }) => {
@@ -92,6 +110,7 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
                 value={value}
                 options={options}
                 onBeforeChange={(editor, data, value) => {
+                  console.log('xd', editor);
                   setValue(value);
                 }}
               />
