@@ -7,12 +7,17 @@ import getNotesList from './helpers/getNotesList';
 import Error from './components/Error';
 import { ListNoteItem } from './helpers/interfaces';
 import Empty from './components/Empty';
+import { useNotes } from './hooks/useNotes';
 
 function Home() {
   const [isError, setIsError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
   const { noteId } = useParams();
+
+  const { notes } = useNotes();
   const { push } = useHistory();
+
+  console.log(notes);
 
   useEffect(() => {
     document.title = noteId || 'notes';

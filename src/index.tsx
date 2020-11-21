@@ -11,10 +11,13 @@ import 'codemirror/theme/neat.css';
 import 'codemirror/mode/xml/xml.js';
 import 'codemirror/mode/markdown/markdown.js';
 import 'codemirror/mode/javascript/javascript.js';
+import { NotesProvider } from './contexts/NotesProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NotesProvider>
+      <App />
+    </NotesProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
