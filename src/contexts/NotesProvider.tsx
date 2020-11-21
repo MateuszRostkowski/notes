@@ -36,7 +36,7 @@ export function NotesProvider(props: Props) {
     setCurrentNote(null);
   }, []);
 
-  const addNote = (noteName = () => {});
+  const addNote = noteName => {};
 
   const removeCurrentNote = () => {};
 
