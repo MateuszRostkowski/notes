@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import getNotesList, { NOTE_LIST_KEY } from '../helpers/getNotesList';
 import { ListNoteItem } from '../helpers/interfaces';
@@ -12,6 +12,11 @@ interface AddNoteProps {
 const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
   const { push } = useHistory();
   const [name, setName] = useState('');
+  const inputRef = useRef<HTMLInputElement | null>();
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const handleAddNote = () => {
     if (!name) {
@@ -52,7 +57,11 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
             }}>
             Close
           </a>
-          <input value={name} onChange={e => setName(e.target.value)} />
+          <input
+            ref={ref => (inputRef.current = ref)}
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
           <button className="button" onClick={handleAddNote}>
             Add new note
           </button>
