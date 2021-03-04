@@ -24,3 +24,15 @@ yarn install
 ```bash
 npm start
 ```
+
+## **TODO**
+
+- [ ] Refactor:
+    - [ ] Add makeContext helper function
+    - [ ] Finish Notes Provider
+    - [ ] Create screens folder
+    - [ ] Prevent rerendering of components - useMemo, useCallback, memo
+- [ ] Finish designs
+- [ ] Implement designs
+- [ ] Write some tests
+- [ ] Add some simple BE - maybe firebase or something else
