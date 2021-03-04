@@ -3,7 +3,6 @@ import NoteContainer from './components/NoteContainer';
 import SideBar from './components/SideBar';
 
 import { useParams, useHistory } from 'react-router-dom';
-import getNotesList from './helpers/getNotesList';
 import Error from './components/Error';
 import { ListNoteItem } from './helpers/interfaces';
 import Empty from './components/Empty';
@@ -17,27 +16,24 @@ function Home() {
   const { notes } = useNotes();
   const { push } = useHistory();
 
-  console.log(notes);
-
   useEffect(() => {
     document.title = noteId || 'notes';
-    const list = getNotesList();
 
-    if (!list || list.length === 0) {
+    if (!notes || notes.length === 0) {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
-      if (!noteId && list.length > 0) {
-        push(`/${list[0].name}`);
+      if (!noteId && notes.length > 0) {
+        push(`/${notes[0].name}`);
       }
 
-      if (list.some((item: ListNoteItem) => item.name === noteId)) {
+      if (notes.some((item: ListNoteItem) => item.name === noteId)) {
         setIsError(false);
       } else {
         setIsError(true);
       }
     }
-  }, [noteId, push]);
+  }, [noteId, notes, push]);
 
   return (
     <div className="home-container">

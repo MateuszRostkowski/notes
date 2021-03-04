@@ -1,26 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import getNotesList from '../helpers/getNotesList';
 import { ListNoteItem } from '../helpers/interfaces';
 import AddNote from './AddNote';
 import { CSSTransition } from 'react-transition-group';
+import { useNotes } from '../hooks/useNotes';
 
 function SideBar() {
   const [addMode, setAddMode] = useState(false);
-  const [notesList, setNotesList] = useState([]);
-  const [width, setWidth] = useState<number | 'auto'>('auto');
+  const { notes } = useNotes();
   const [showNotesList, setShowNotesList] = useState(false);
   const sideBarRef = useRef<HTMLDivElement>(null);
 
   const { noteId } = useParams();
-  useEffect(() => {
-    const list = getNotesList();
-    setNotesList(list);
-  }, [addMode, noteId]);
-
-  useEffect(() => {
-    setWidth(sideBarRef?.current?.clientWidth ?? 'auto');
-  }, []);
 
   const toggleMode = () => setAddMode(!addMode);
   return (
@@ -39,7 +30,7 @@ function SideBar() {
         timeout={200}
         classNames="sidebar-wrapper">
         <div className="sidebar-wrapper" ref={sideBarRef}>
-          <div className="sidebar-container" style={{ width }}>
+          <div className="sidebar-container">
             <h1>Notes app</h1>
             <a
               href="/"
@@ -50,7 +41,7 @@ function SideBar() {
               Add note
             </a>
             <div className="links-container">
-              {notesList.map((item: ListNoteItem, index: number) => {
+              {notes.map((item: ListNoteItem, index: number) => {
                 return (
                   <Link
                     key={index}
