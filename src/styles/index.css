@@ -94,6 +94,9 @@ div#modal-root.shown {
 .sidebar-container {
   padding: 50px 0 20px;
   overflow-y: auto;
+  width: 100%;
+  overflow-y: scroll;
+  height: 100vh;
 }
 
 .sidebar-container a {
@@ -181,6 +184,7 @@ div#modal-root.shown {
   border-bottom: 1px solid #022458;
   padding: 10px 20px;
   text-align: left;
+  word-break: break-word;
 }
 
 .links-container a:first-child {
