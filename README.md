@@ -2,6 +2,8 @@
 
 It's a simple notes app created with react
 
+![Preview](./src/assets/AppPreview.gif)
+
 ## **Installation**
 
 To run it in local environment follow these steps:
