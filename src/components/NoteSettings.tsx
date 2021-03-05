@@ -1,71 +1,32 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Cog from '../Cog_font_awesome.svg';
-import getNotesList, { NOTE_LIST_KEY } from '../helpers/getNotesList';
-import { ListNoteItem } from '../helpers/interfaces';
+import { useNotes } from '../hooks/useNotes';
 import { Modal } from './Modal';
-import { TYPING_MODE_KEY } from './NoteContainer';
 
 const NoteSettings: FC = () => {
   const [showSettings, setShowSettings] = useState(false);
   const { noteId } = useParams();
-  const { push } = useHistory();
   const [name, setName] = useState(noteId);
+  const { editNoteName, removeNote } = useNotes();
 
   useEffect(() => {
     setName(noteId);
   }, [noteId]);
-
-  // const handleDeleteNote = () => alert('Deleting note is not supported');
 
   const toggleMode = () => {
     setShowSettings(state => !state);
   };
 
   const handleEditNote = () => {
-    if (!name) {
-      toggleMode();
-      return;
+    try {
+      editNoteName(noteId, name, toggleMode);
+    } catch (e) {
+      alert(e);
     }
-
-    if (name === NOTE_LIST_KEY || name === TYPING_MODE_KEY) {
-      alert('this name is not allowed');
-      return;
-    }
-    const list = getNotesList();
-
-    const newList = list.map((item: ListNoteItem) => {
-      if (item.name === noteId) {
-        return { name };
-      }
-      return item;
-    });
-    const rawNote = localStorage.getItem(noteId);
-
-    console.log('newList', newList, rawNote);
-
-    if (rawNote) {
-      const oldNote = JSON.parse(rawNote);
-      const value = JSON.stringify({
-        name,
-        value: oldNote?.value,
-      });
-
-      localStorage.setItem(name, value);
-      localStorage.setItem(NOTE_LIST_KEY, JSON.stringify(newList));
-      toggleMode();
-    }
-    push(`/${name}`);
-    localStorage.removeItem(noteId);
   };
   const handleDeleteNote = () => {
-    const list = getNotesList();
-
-    const newList = list.filter((item: ListNoteItem) => item.name !== noteId);
-
-    localStorage.setItem(NOTE_LIST_KEY, JSON.stringify(newList));
-    push(`/${newList[0]?.name ?? ''}`);
-    localStorage.removeItem(noteId);
+    removeNote(noteId);
   };
 
   return (
