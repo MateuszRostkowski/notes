@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown/with-html';
 
 import CodeBlock from './CodeBlock';
 import NoteSettings from './NoteSettings';
+import ToggleModeButton from './ToggleModeButton';
 
 export const TYPING_MODE_KEY = 'typing_mode';
 
@@ -60,6 +61,9 @@ const WrapCheckBox = (props: any) => {
   );
 };
 
+const modes = ['edit', 'preview', 'both'] as const;
+export type modes = typeof modes[number];
+
 const NoteContainer: FC<Props> = ({ noteId }) => {
   const locaStorageTypingMode = localStorage.getItem(TYPING_MODE_KEY);
   const initialType =
@@ -69,9 +73,7 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
       ? 'edit'
       : 'both';
 
-  const [typingMode, setTypingMode] = useState<'preview' | 'edit' | 'both'>(
-    initialType,
-  );
+  const [typingMode, setTypingMode] = useState<modes>(initialType);
   const [value, setValue] = useState('');
   const [noteName, setNoteName] = useState('');
 
@@ -127,27 +129,13 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
           typingMode === 'both' ? ' note-wrapper--both' : ''
         }`}>
         <div className="mode-buttons-container">
-          <button
-            className={`mode-button${
-              typingMode === 'edit' ? ' mode-button-active' : ''
-            }`}
-            onClick={() => setTypingMode('edit')}>
-            Edit
-          </button>
-          <button
-            className={`mode-button${
-              typingMode === 'preview' ? ' mode-button-active' : ''
-            }`}
-            onClick={() => setTypingMode('preview')}>
-            Preview
-          </button>
-          <button
-            className={`mode-button${
-              typingMode === 'both' ? ' mode-button-active' : ''
-            }`}
-            onClick={() => setTypingMode('both')}>
-            Both
-          </button>
+          {modes.map(mode => (
+            <ToggleModeButton
+              mode={mode}
+              typingMode={typingMode}
+              onToggleChange={setTypingMode}
+            />
+          ))}
         </div>
         <h1 className="note-title">{noteName}</h1>
         <div className="note-container">
