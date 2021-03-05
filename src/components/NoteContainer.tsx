@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useCallback } from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import ReactMarkdown from 'react-markdown/with-html';
 
@@ -121,16 +121,22 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
     code: CodeBlock,
   };
 
+  const handleCodeMirrorChange = useCallback((editor, data, value) => {
+    setValue(value);
+  }, []);
+
+  const isPreviewMode = typingMode === 'preview';
+  const isBothMode = typingMode === 'both';
+  const isEditMode = typingMode === 'edit';
+
   return (
     <div className="note">
       <NoteSettings />
-      <div
-        className={`note-wrapper${
-          typingMode === 'both' ? ' note-wrapper--both' : ''
-        }`}>
+      <div className={`note-wrapper${isBothMode ? ' note-wrapper--both' : ''}`}>
         <div className="mode-buttons-container">
           {modes.map(mode => (
             <ToggleModeButton
+              key={mode}
               mode={mode}
               typingMode={typingMode}
               onToggleChange={setTypingMode}
@@ -139,19 +145,16 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
         </div>
         <h1 className="note-title">{noteName}</h1>
         <div className="note-container">
-          {(typingMode === 'edit' || typingMode === 'both') && (
+          {(isEditMode || isBothMode) && (
             <div className="code-mirror-container">
               <CodeMirror
                 value={value}
                 options={options}
-                onBeforeChange={(editor, data, value) => {
-                  console.log('xd', editor);
-                  setValue(value);
-                }}
+                onBeforeChange={handleCodeMirrorChange}
               />
             </div>
           )}
-          {(typingMode === 'preview' || typingMode === 'both') && (
+          {(isPreviewMode || isBothMode) && (
             <div className="react-markdown-container markdown-body">
               <ReactMarkdown
                 renderers={renderers}
