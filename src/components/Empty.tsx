@@ -4,9 +4,10 @@ const Empty = () => {
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       setShown(true);
     }, 1000);
+    return clearTimeout(timeoutId);
   }, []);
 
   return (
