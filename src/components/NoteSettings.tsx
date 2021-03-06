@@ -2,11 +2,12 @@ import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Cog from '../Cog_font_awesome.svg';
 import { useNotes } from '../hooks/useNotes';
+import { NotesParams } from '../screens/Routes';
 import { Modal } from './Modal';
 
 const NoteSettings: FC = () => {
   const [showSettings, setShowSettings] = useState(false);
-  const { noteId } = useParams();
+  const { noteId } = useParams<NotesParams>();
   const [name, setName] = useState(noteId);
   const { editNoteName, removeNote } = useNotes();
 

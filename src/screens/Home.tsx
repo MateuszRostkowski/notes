@@ -7,12 +7,13 @@ import Error from '../components/Error';
 import { ListNoteItem } from '../helpers/interfaces';
 import Empty from '../components/Empty';
 import { useNotes } from '../hooks/useNotes';
+import { NotesParams } from './Routes';
 
 function Home() {
   const [isError, setIsError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
-  const { noteId } = useParams();
 
+  const { noteId } = useParams<NotesParams>();
   const { notes } = useNotes();
   const { push } = useHistory();
 
@@ -24,7 +25,7 @@ function Home() {
     } else {
       setIsEmpty(false);
       if (!noteId && notes.length > 0) {
-        push(`/${notes[0].name}`);
+        push(`/note/${notes[0].name}`);
       }
 
       if (notes.some((item: ListNoteItem) => item.name === noteId)) {

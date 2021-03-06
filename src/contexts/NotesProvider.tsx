@@ -98,7 +98,7 @@ export function NotesProvider(props: Props) {
           value: '',
         }),
       );
-      push(`/${name}`);
+      push(`/note/${name}`);
       callback();
     },
     [notes, checkIfNameIsAllowed, push],
@@ -108,7 +108,7 @@ export function NotesProvider(props: Props) {
     const newNotes = notes.filter((item: ListNoteItem) => item.name !== noteId);
     setNotes(newNotes);
 
-    push(`/${newNotes[0]?.name ?? ''}`);
+    push(`/note/${newNotes[0]?.name ?? ''}`);
     localStorage.removeItem(noteId);
   };
 
@@ -139,7 +139,7 @@ export function NotesProvider(props: Props) {
       localStorage.setItem(NOTE_LIST_KEY, JSON.stringify(newNotes));
       callback();
     }
-    push(`/${name}`);
+    push(`/note/${name}`);
     localStorage.removeItem(noteId);
   };
 

@@ -1,13 +1,16 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import classNames from 'classnames';
+
 import { ListNoteItem } from '../helpers/interfaces';
 import AddNote from './AddNote';
 import { CSSTransition } from 'react-transition-group';
 import { useNotes } from '../hooks/useNotes';
+import { NotesParams } from '../screens/Routes';
 
 const SideBarNotesList = () => {
   const { notes } = useNotes();
-  const { noteId } = useParams();
+  const { noteId } = useParams<NotesParams>();
 
   return (
     <div className="links-container">
@@ -15,7 +18,7 @@ const SideBarNotesList = () => {
         return (
           <Link
             key={index}
-            to={`/${item.name}`}
+            to={`/note/${item.name}`}
             className={noteId === item.name ? 'active-item' : ''}>
             {item.name}
           </Link>
@@ -45,9 +48,9 @@ function SideBar() {
   return (
     <>
       <div
-        className={`sidebar-toggle${
-          showNotesList ? ' sidebar-toggle--opened' : ''
-        }`}
+        className={classNames('sidebar-toggle', {
+          'sidebar-toggle--opened': showNotesList,
+        })}
         onClick={() => setShowNotesList(!showNotesList)}>
         <span className="burger-line burger-line-1"></span>
         <span className="burger-line burger-line-1"></span>
@@ -63,9 +66,7 @@ function SideBar() {
             <a href="/" onClick={handleAddNoteClick}>
               Add note
             </a>
-            <div className="links-container">
-              <SideBarNotesList />
-            </div>
+            <SideBarNotesList />
           </div>
         </div>
       </CSSTransition>
