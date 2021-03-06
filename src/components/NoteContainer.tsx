@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect, useCallback } from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import ReactMarkdown from 'react-markdown/with-html';
+import classNames from 'classnames';
 
 import CodeBlock from './CodeBlock';
 import NoteSettings from './NoteSettings';
@@ -132,7 +133,10 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
   return (
     <div className="note">
       <NoteSettings />
-      <div className={`note-wrapper${isBothMode ? ' note-wrapper--both' : ''}`}>
+      <div
+        className={classNames('note-wrapper', {
+          'note-wrapper--both': isBothMode,
+        })}>
         <div className="mode-buttons-container">
           {modes.map(mode => (
             <ToggleModeButton

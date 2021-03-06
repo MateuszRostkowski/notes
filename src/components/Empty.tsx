@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import classNames from 'classnames';
 
 const Empty = () => {
   const [shown, setShown] = useState(false);
@@ -13,7 +14,10 @@ const Empty = () => {
   return (
     <div className="empty-container">
       <h1>You don't have any note</h1>
-      <p className={`add-new-info${shown ? ' add-new-info--shown' : ''}`}>
+      <p
+        className={classNames('add-new-info', {
+          'add-new-info--shown': shown,
+        })}>
         ← Click here to add one
       </p>
     </div>
