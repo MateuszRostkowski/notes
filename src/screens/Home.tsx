@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import NoteContainer from './components/NoteContainer';
-import SideBar from './components/SideBar';
+import NoteContainer from '../components/NoteContainer';
+import SideBar from '../components/SideBar';
 
 import { useParams, useHistory } from 'react-router-dom';
-import Error from './components/Error';
-import { ListNoteItem } from './helpers/interfaces';
-import Empty from './components/Empty';
-import { useNotes } from './hooks/useNotes';
+import Error from '../components/Error';
+import { ListNoteItem } from '../helpers/interfaces';
+import Empty from '../components/Empty';
+import { useNotes } from '../hooks/useNotes';
 
 function Home() {
   const [isError, setIsError] = useState(false);

@@ -1,9 +1,9 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home';
-import { NotesProvider } from './contexts/NotesProvider';
+import { NotesProvider } from '../contexts/NotesProvider';
 
-export default function App() {
+export default function Routes() {
   return (
     <Router basename="/">
       <div>

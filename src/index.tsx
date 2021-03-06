@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import './styles/gh-markdown.css';
-import App from './App';
+import Routes from './screens/Routes';
 import * as serviceWorker from './serviceWorker';
 
 import 'codemirror/lib/codemirror.css';
@@ -14,7 +14,7 @@ import 'codemirror/mode/javascript/javascript.js';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Routes />
   </React.StrictMode>,
   document.getElementById('root'),
 );
