@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import ReactMarkdown from 'react-markdown/with-html';
 import classNames from 'classnames';
@@ -6,12 +6,7 @@ import classNames from 'classnames';
 import CodeBlock from './CodeBlock';
 import NoteSettings from './NoteSettings';
 import ToggleModeButton from './ToggleModeButton';
-
-export const TYPING_MODE_KEY = 'typing_mode';
-
-interface Props {
-  noteId: string;
-}
+import { useNote } from '../hooks/useNote';
 
 const generateKeySelection = (cm: any, prefix: string) => {
   const selection = cm.getSelection();
@@ -65,42 +60,15 @@ const WrapCheckBox = (props: any) => {
 const modes = ['edit', 'preview', 'both'] as const;
 export type modes = typeof modes[number];
 
-const NoteContainer: FC<Props> = ({ noteId }) => {
-  const locaStorageTypingMode = localStorage.getItem(TYPING_MODE_KEY);
-  const initialType =
-    locaStorageTypingMode === 'preview'
-      ? 'preview'
-      : locaStorageTypingMode === 'edit'
-      ? 'edit'
-      : 'both';
-
-  const [typingMode, setTypingMode] = useState<modes>(initialType);
-  const [value, setValue] = useState('');
-  const [noteName, setNoteName] = useState('');
-
-  useEffect(() => {
-    localStorage.setItem(TYPING_MODE_KEY, typingMode);
-  }, [typingMode]);
-
-  useEffect(() => {
-    const rawNote = localStorage.getItem(noteId);
-    if (rawNote) {
-      setNoteName(JSON.parse(rawNote).name);
-      setValue(JSON.parse(rawNote).value);
-    }
-  }, [noteId]);
-
-  useEffect(() => {
-    if (noteId && value) {
-      localStorage.setItem(
-        noteId,
-        JSON.stringify({
-          name: noteName,
-          value,
-        }),
-      );
-    }
-  }, [value, noteId, noteName]);
+const NoteContainer = () => {
+  const {
+    note,
+    setNote,
+    noteName,
+    typingMode,
+    setTypingMode,
+    handleCodeMirrorChange,
+  } = useNote();
 
   const renderers = {
     listItem: (props: any): any => {
@@ -109,8 +77,8 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
         const { checked, sourcePosition } = props;
         return (
           <WrapCheckBox
-            markdown={value}
-            setMarkdown={setValue}
+            markdown={note}
+            setMarkdown={setNote}
             checked={checked}
             sourcePosition={sourcePosition}>
             {children}
@@ -121,10 +89,6 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
     },
     code: CodeBlock,
   };
-
-  const handleCodeMirrorChange = useCallback((editor, data, value) => {
-    setValue(value);
-  }, []);
 
   const isPreviewMode = typingMode === 'preview';
   const isBothMode = typingMode === 'both';
@@ -152,7 +116,7 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
           {(isEditMode || isBothMode) && (
             <div className="code-mirror-container">
               <CodeMirror
-                value={value}
+                value={note}
                 options={options}
                 onBeforeChange={handleCodeMirrorChange}
               />
@@ -162,7 +126,7 @@ const NoteContainer: FC<Props> = ({ noteId }) => {
             <div className="react-markdown-container markdown-body">
               <ReactMarkdown
                 renderers={renderers}
-                source={value}
+                source={note}
                 rawSourcePos
                 escapeHtml={false}
               />
