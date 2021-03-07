@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Modal } from './Modal';
 import { useNotes } from '../hooks/useNotes';
 
@@ -15,30 +15,35 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
     inputRef.current?.focus();
   }, []);
 
-  const handleAddNote = () => {
+  const handleAddNote = useCallback(() => {
     try {
       addNote(name, toggleMode);
     } catch (e) {
       alert(e);
     }
-  };
+  }, [addNote, name, toggleMode]);
+
+  const handleClose = useCallback(
+    e => {
+      e.preventDefault();
+      toggleMode();
+    },
+    [toggleMode],
+  );
+
+  const handleInput = useCallback(e => setName(e.target.value), []);
 
   return (
     <Modal>
       <div className="add-note-wrappper">
         <div className="add-note-container">
-          <a
-            href="/"
-            onClick={e => {
-              e.preventDefault();
-              toggleMode();
-            }}>
+          <a href="/" onClick={handleClose}>
             Close
           </a>
           <input
             ref={ref => (inputRef.current = ref)}
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={handleInput}
           />
           <button className="button" onClick={handleAddNote}>
             Add new note

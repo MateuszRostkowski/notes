@@ -104,44 +104,52 @@ export function NotesProvider(props: Props) {
     [notes, checkIfNameIsAllowed, push],
   );
 
-  const removeNote = (noteId: string) => {
-    const newNotes = notes.filter((item: ListNoteItem) => item.name !== noteId);
-    setNotes(newNotes);
-
-    push(`/note/${newNotes[0]?.name ?? ''}`);
-    localStorage.removeItem(noteId);
-  };
-
-  const editNoteName = (noteId: string, name: string, callback: () => void) => {
-    checkIfNameIsAllowed(name);
-    if (name === NOTE_LIST_KEY || name === TYPING_MODE_KEY) {
-      alert('this name is not allowed');
-      return;
-    }
-
-    const newNotes = notes.map(item => {
-      if (item.name === noteId) {
-        return { ...item, name };
-      }
-      return item;
-    });
-    const rawNote = localStorage.getItem(noteId);
-
-    if (rawNote) {
-      const oldNote = JSON.parse(rawNote);
-      const value = JSON.stringify({
-        name,
-        value: oldNote?.value,
-      });
-
-      localStorage.setItem(name, value);
+  const removeNote = useCallback(
+    (noteId: string) => {
+      const newNotes = notes.filter(
+        (item: ListNoteItem) => item.name !== noteId,
+      );
       setNotes(newNotes);
-      localStorage.setItem(NOTE_LIST_KEY, JSON.stringify(newNotes));
-      callback();
-    }
-    push(`/note/${name}`);
-    localStorage.removeItem(noteId);
-  };
+
+      push(`/note/${newNotes[0]?.name ?? ''}`);
+      localStorage.removeItem(noteId);
+    },
+    [notes, push],
+  );
+
+  const editNoteName = useCallback(
+    (noteId: string, name: string, callback: () => void) => {
+      checkIfNameIsAllowed(name);
+      if (name === NOTE_LIST_KEY || name === TYPING_MODE_KEY) {
+        alert('this name is not allowed');
+        return;
+      }
+
+      const newNotes = notes.map(item => {
+        if (item.name === noteId) {
+          return { ...item, name };
+        }
+        return item;
+      });
+      const rawNote = localStorage.getItem(noteId);
+
+      if (rawNote) {
+        const oldNote = JSON.parse(rawNote);
+        const value = JSON.stringify({
+          name,
+          value: oldNote?.value,
+        });
+
+        localStorage.setItem(name, value);
+        setNotes(newNotes);
+        localStorage.setItem(NOTE_LIST_KEY, JSON.stringify(newNotes));
+        callback();
+      }
+      push(`/note/${name}`);
+      localStorage.removeItem(noteId);
+    },
+    [checkIfNameIsAllowed, notes, push],
+  );
 
   return (
     <NotesContext.Provider

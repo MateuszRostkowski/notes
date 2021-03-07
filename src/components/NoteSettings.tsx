@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Cog from '../Cog_font_awesome.svg';
 import { useNotes } from '../hooks/useNotes';
@@ -15,20 +15,31 @@ const NoteSettings: FC = () => {
     setName(noteId);
   }, [noteId]);
 
-  const toggleMode = () => {
+  const toggleMode = useCallback(() => {
     setShowSettings(state => !state);
-  };
+  }, []);
 
-  const handleEditNote = () => {
+  const handleEditNote = useCallback(() => {
     try {
       editNoteName(noteId, name, toggleMode);
     } catch (e) {
       alert(e);
     }
-  };
-  const handleDeleteNote = () => {
+  }, [editNoteName, name, noteId, toggleMode]);
+
+  const handleDeleteNote = useCallback(() => {
     removeNote(noteId);
-  };
+  }, [noteId, removeNote]);
+
+  const handleClose = useCallback(
+    e => {
+      e.preventDefault();
+      toggleMode();
+    },
+    [toggleMode],
+  );
+
+  const handleInputChange = useCallback(e => setName(e.target.value), []);
 
   return (
     <>
@@ -39,15 +50,10 @@ const NoteSettings: FC = () => {
         <Modal>
           <div className="add-note-wrappper">
             <div className="add-note-container">
-              <a
-                href="/"
-                onClick={e => {
-                  e.preventDefault();
-                  toggleMode();
-                }}>
+              <a href="/" onClick={handleClose}>
                 Close
               </a>
-              <input value={name} onChange={e => setName(e.target.value)} />
+              <input value={name} onChange={handleInputChange} />
               <div className="mb">
                 <button className="button" onClick={handleEditNote}>
                   Edit note name
