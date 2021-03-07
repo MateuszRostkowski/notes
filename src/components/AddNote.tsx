@@ -31,7 +31,18 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
     [toggleMode],
   );
 
-  const handleInput = useCallback(e => setName(e.target.value), []);
+  const handleInput = useCallback(e => {
+    setName(e.target.value);
+  }, []);
+
+  const handleKeyDown = useCallback(
+    e => {
+      if (e.keyCode === 13) {
+        handleAddNote();
+      }
+    },
+    [handleAddNote],
+  );
 
   return (
     <Modal>
@@ -44,6 +55,7 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
             ref={ref => (inputRef.current = ref)}
             value={name}
             onChange={handleInput}
+            onKeyDown={handleKeyDown}
           />
           <button className="button" onClick={handleAddNote}>
             Add new note

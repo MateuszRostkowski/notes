@@ -39,6 +39,15 @@ const NoteSettings: FC = () => {
     [toggleMode],
   );
 
+  const handleKeyDown = useCallback(
+    e => {
+      if (e.keyCode === 13) {
+        handleEditNote();
+      }
+    },
+    [handleEditNote],
+  );
+
   const handleInputChange = useCallback(e => setName(e.target.value), []);
 
   return (
@@ -53,7 +62,11 @@ const NoteSettings: FC = () => {
               <a href="/" onClick={handleClose}>
                 Close
               </a>
-              <input value={name} onChange={handleInputChange} />
+              <input
+                value={name}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
+              />
               <div className="mb">
                 <button className="button" onClick={handleEditNote}>
                   Edit note name
