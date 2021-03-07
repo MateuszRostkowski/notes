@@ -5,8 +5,9 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+
 import { useHistory } from 'react-router-dom';
-import { TYPING_MODE_KEY } from '../components/NoteContainer';
+import { TYPING_MODE_KEY } from '../hooks/useNote';
 import getNotesList, { NOTE_LIST_KEY } from '../helpers/getNotesList';
 import { ListNoteItem } from '../helpers/interfaces';
 import uuidv4 from '../helpers/uuid';
