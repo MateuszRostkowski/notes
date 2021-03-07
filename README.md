@@ -30,10 +30,9 @@ npm start
 ## **TODO**
 
 - [ ] Refactor:
-  - [ ] Add makeContext helper function
-  - [ ] Finish Notes Provider
-  - [ ] Create screens folder
-  - [ ] Prevent rerendering of components - useMemo, useCallback, memo
+  - [x] Finish Notes Provider
+  - [x] Create screens folder
+  - [x] Prevent rerendering of components - useMemo, useCallback, memo
   - [ ] Move renders from map functions to small components
 - [ ] Finish designs
 - [ ] Implement designs
