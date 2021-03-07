@@ -39,7 +39,7 @@ function Home() {
   return (
     <div className="home-container">
       <SideBar />
-      {!isError && !isEmpty && <NoteContainer key={noteId} noteId={noteId} />}
+      {!isError && !isEmpty && <NoteContainer key={noteId} />}
       {!isError && isEmpty && <Empty />}
       {isError && !isEmpty && <Error />}
     </div>
