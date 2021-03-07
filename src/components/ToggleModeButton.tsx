@@ -1,8 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import { modes } from './NoteContainer';
 
-export const TYPING_MODE_KEY = 'typing_mode';
-
 interface Props {
   typingMode: modes;
   mode: modes;
