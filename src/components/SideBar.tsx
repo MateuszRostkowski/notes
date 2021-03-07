@@ -31,7 +31,7 @@ const SideBarNotesList = () => {
 function SideBar() {
   const [addMode, setAddMode] = useState(false);
   const [showNotesList, setShowNotesList] = useState(false);
-  const sideBarRef = useRef<HTMLDivElement>(null);
+  const sideBarRef = useRef<HTMLDivElement | null>(null);
 
   const toggleMode = useCallback(() => {
     setAddMode(state => !state);
@@ -60,7 +60,9 @@ function SideBar() {
         in={showNotesList}
         timeout={200}
         classNames="sidebar-wrapper">
-        <div className="sidebar-wrapper" ref={sideBarRef}>
+        <div
+          className="sidebar-wrapper"
+          ref={ref => (sideBarRef.current = ref)}>
           <div className="sidebar-container">
             <h1>Notes app</h1>
             <a href="/" onClick={handleAddNoteClick}>
