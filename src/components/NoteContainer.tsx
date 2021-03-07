@@ -42,7 +42,7 @@ const WrapCheckBox = (props: any) => {
       const lines = markdown.split('\n');
       const find = checked ? markdownChecked : markdownUnchecked;
       const replace = checked ? markdownUnchecked : markdownChecked;
-      console.log({ lineIndex, lines, find, replace });
+
       lines[lineIndex] = lines[lineIndex].replace(find, replace);
       setMarkdown(lines.join('\n'));
     } catch (error) {
@@ -51,7 +51,7 @@ const WrapCheckBox = (props: any) => {
   };
   return (
     <li>
-      <input type="checkbox" checked={checked} onClick={flipCheckBox} />
+      <input type="checkbox" checked={checked} onChange={flipCheckBox} />
       {children}
     </li>
   );
