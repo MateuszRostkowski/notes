@@ -29,11 +29,13 @@ npm start
 
 ## **TODO**
 
-- [ ] Refactor:
+- [x] Refactor:
   - [x] Finish Notes Provider
   - [x] Create screens folder
   - [x] Prevent rerendering of components - useMemo, useCallback, memo
-  - [ ] Move renders from map functions to small components
+  - [x] Move renders from map functions to small components
+- [ ] add some toast package
+- [ ] implement messaging system
 - [ ] Finish designs
 - [ ] Implement designs
 - [ ] Write some tests
