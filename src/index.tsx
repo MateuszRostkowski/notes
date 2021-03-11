@@ -12,6 +12,8 @@ import 'codemirror/mode/xml/xml.js';
 import 'codemirror/mode/markdown/markdown.js';
 import 'codemirror/mode/javascript/javascript.js';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 ReactDOM.render(
   <React.StrictMode>
     <Routes />

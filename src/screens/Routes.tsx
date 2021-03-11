@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import { NotesProvider } from '../contexts/NotesProvider';
+import { ToastContainer } from 'react-toastify';
 
 export interface NotesParams {
   noteId: string;
@@ -19,6 +20,7 @@ export default function Routes() {
             </Route>
           </Switch>
         </NotesProvider>
+        <ToastContainer />
       </div>
     </Router>
   );
