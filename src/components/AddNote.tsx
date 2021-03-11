@@ -1,6 +1,7 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Modal } from './Modal';
 import { useNotes } from '../hooks/useNotes';
+import { toast } from 'react-toastify';
 
 interface AddNoteProps {
   toggleMode: () => void;
@@ -17,9 +18,16 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
 
   const handleAddNote = useCallback(() => {
     try {
-      addNote(name, toggleMode);
+      addNote(name, () => {
+        toast.success('Note added successfuly', {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        toggleMode();
+      });
     } catch (e) {
-      alert(e);
+      toast.error(e.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
   }, [addNote, name, toggleMode]);
 

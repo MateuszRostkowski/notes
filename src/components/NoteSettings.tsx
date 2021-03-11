@@ -1,5 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import Cog from '../Cog_font_awesome.svg';
 import { useNotes } from '../hooks/useNotes';
 import { NotesParams } from '../screens/Routes';
@@ -21,14 +23,25 @@ const NoteSettings: FC = () => {
 
   const handleEditNote = useCallback(() => {
     try {
-      editNoteName(noteId, name, toggleMode);
+      editNoteName(noteId, name, () => {
+        toast.success('Note name edited successfuly', {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        toggleMode();
+      });
     } catch (e) {
-      alert(e);
+      toast.error(e, {
+        position: toast.POSITION.TOP_LEFT,
+      });
     }
   }, [editNoteName, name, noteId, toggleMode]);
 
   const handleDeleteNote = useCallback(() => {
-    removeNote(noteId);
+    removeNote(noteId, () => {
+      toast.success('Note deleted successfuly', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    });
   }, [noteId, removeNote]);
 
   const handleClose = useCallback(

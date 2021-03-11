@@ -21,7 +21,7 @@ interface SingeNote {
 interface NotesContext {
   addNote: (name: string, callback: () => void) => void;
   editNoteName: (noteId: string, name: string, callback: () => void) => void;
-  removeNote: (name: string) => void;
+  removeNote: (name: string, callback: () => void) => void;
   notes: ListNoteItem[];
   currentNote: SingeNote | null;
 }
@@ -106,7 +106,7 @@ export function NotesProvider(props: Props) {
   );
 
   const removeNote = useCallback(
-    (noteId: string) => {
+    (noteId: string, callback: () => void) => {
       const newNotes = notes.filter(
         (item: ListNoteItem) => item.name !== noteId,
       );
@@ -114,6 +114,7 @@ export function NotesProvider(props: Props) {
 
       push(`/note/${newNotes[0]?.name ?? ''}`);
       localStorage.removeItem(noteId);
+      callback();
     },
     [notes, push],
   );
@@ -121,10 +122,6 @@ export function NotesProvider(props: Props) {
   const editNoteName = useCallback(
     (noteId: string, name: string, callback: () => void) => {
       checkIfNameIsAllowed(name);
-      if (name === NOTE_LIST_KEY || name === TYPING_MODE_KEY) {
-        alert('this name is not allowed');
-        return;
-      }
 
       const newNotes = notes.map(item => {
         if (item.name === noteId) {
