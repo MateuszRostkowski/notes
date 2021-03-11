@@ -34,8 +34,8 @@ yarn start
   - [x] Create screens folder
   - [x] Prevent rerendering of components - useMemo, useCallback, memo
   - [x] Move renders from map functions to small components
-- [ ] add some toast package
-- [ ] implement messaging system
+- [x] add some toast package
+- [x] implement messaging system
 - [ ] Finish designs
 - [ ] Implement designs
 - [ ] Write some tests
