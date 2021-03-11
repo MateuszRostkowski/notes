@@ -24,7 +24,7 @@ yarn install
 3. 🚀 **Launch Project**
 
 ```bash
-npm start
+yarn start
 ```
 
 ## **TODO**
