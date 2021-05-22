@@ -1,4 +1,5 @@
-import React, {
+import {
+  FC,
   createContext,
   ReactNode,
   useCallback,
@@ -38,7 +39,7 @@ interface Props {
   children?: ReactNode;
 }
 
-export const NotesProvider: React.FC<Props> = (props) => {
+export const NotesProvider: FC<Props> = props => {
   const [notes, setNotes] = useState<ListNoteItem[]>([]);
   const [currentNote, setCurrentNote] = useState<SingeNote | null>(null);
   const { push } = useHistory();
@@ -161,4 +162,4 @@ export const NotesProvider: React.FC<Props> = (props) => {
       {props.children}
     </NotesContext.Provider>
   );
-}
+};

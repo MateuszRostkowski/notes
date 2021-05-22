@@ -1,10 +1,10 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 
 const modalRoot = document.getElementById('modal-root') as HTMLElement;
 
 export type ModalProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const Modal: FC<ModalProps> = ({ children }) => {

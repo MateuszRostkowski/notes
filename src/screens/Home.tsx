@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import NoteContainer from '../components/NoteContainer';
 import SideBar from '../components/SideBar';
 
@@ -9,7 +9,7 @@ import Empty from '../components/Empty';
 import { useNotes } from '../hooks/useNotes';
 import { NotesParams } from './Routes';
 
-const Home: React.FC = () =>  {
+const Home: FC = () => {
   const [isError, setIsError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
 
@@ -44,6 +44,6 @@ const Home: React.FC = () =>  {
       {isError && !isEmpty && <Error />}
     </div>
   );
-}
+};
 
 export default Home;

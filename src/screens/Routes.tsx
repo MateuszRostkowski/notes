@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import { NotesProvider } from '../contexts/NotesProvider';
@@ -8,7 +8,7 @@ export interface NotesParams {
   noteId: string;
 }
 
-const Routes: React.FC = () => {
+const Routes: FC = () => {
   return (
     <Router basename="/">
       <div>
@@ -24,6 +24,6 @@ const Routes: React.FC = () => {
       </div>
     </Router>
   );
-}
+};
 
-export default Routes
+export default Routes;

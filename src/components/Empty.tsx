@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import classNames from 'classnames';
 
-const Empty: React.FC = () => {
+const Empty: FC = () => {
   const [shown, setShown] = useState(false);
 
   useEffect(() => {

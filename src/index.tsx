@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import './styles/gh-markdown.css';
@@ -15,9 +15,9 @@ import 'codemirror/mode/javascript/javascript.js';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <Routes />
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root'),
 );
 

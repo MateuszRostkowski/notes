@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import { FC, useState, useRef, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -8,7 +8,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useNotes } from '../hooks/useNotes';
 import { NotesParams } from '../screens/Routes';
 
-const SideBarNotesList: React.FC = () => {
+const SideBarNotesList: FC = () => {
   const { notes } = useNotes();
   const { noteId } = useParams<NotesParams>();
 
@@ -28,7 +28,7 @@ const SideBarNotesList: React.FC = () => {
   );
 };
 
-const SideBar: React.FC = () =>  {
+const SideBar: FC = () => {
   const [addMode, setAddMode] = useState(false);
   const [showNotesList, setShowNotesList] = useState(false);
   const sideBarRef = useRef<HTMLDivElement | null>(null);
@@ -75,6 +75,6 @@ const SideBar: React.FC = () =>  {
       {addMode && <AddNote toggleMode={toggleMode} />}
     </>
   );
-}
+};
 
 export default SideBar;

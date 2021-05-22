@@ -1,6 +1,7 @@
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import ReactMarkdown from 'react-markdown';
 import classNames from 'classnames';
+import { FC } from 'react';
 
 import CodeBlock from './CodeBlock';
 import NoteSettings from './NoteSettings';
@@ -59,7 +60,7 @@ const WrapCheckBox = (props: any) => {
 const modes = ['edit', 'preview', 'both'] as const;
 export type ModesType = typeof modes[number];
 
-const NoteContainer: React.FC = () => {
+const NoteContainer: FC = () => {
   const {
     note,
     setNote,
@@ -87,11 +88,8 @@ const NoteContainer: React.FC = () => {
       return <li>{children}</li>;
     },
     code({ children, className }: any) {
-      return <CodeBlock
-        language={className || ''}
-        children={children}
-      />
-    }
+      return <CodeBlock language={className || ''} children={children} />;
+    },
   };
 
   const isPreviewMode = typingMode === 'preview';

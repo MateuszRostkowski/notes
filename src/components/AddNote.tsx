@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Modal } from './Modal';
 import { useNotes } from '../hooks/useNotes';
 import { toast } from 'react-toastify';
