@@ -8,7 +8,7 @@ import NoteSettings from './NoteSettings';
 import ToggleModeButton from './ToggleModeButton';
 import { useNote } from '../hooks/useNote';
 
-const generateKeySelection = (cm: any, prefix: string) => {
+const generateKeySelection = (cm: CodeMirror.Editor, prefix: string) => {
   const selection = cm.getSelection();
 
   if (selection.length > 0) {
@@ -22,12 +22,12 @@ const generateKeySelection = (cm: any, prefix: string) => {
   }
 };
 
-const options = {
+const options: CodeMirror.EditorConfiguration = {
   mode: 'markdown',
   autofocus: true,
   extraKeys: {
-    'Cmd-B': (cm: any) => generateKeySelection(cm, '**'),
-    'Cmd-I': (cm: any) => generateKeySelection(cm, '*'),
+    'Cmd-B': (cm: CodeMirror.Editor) => generateKeySelection(cm, '**'),
+    'Cmd-I': (cm: CodeMirror.Editor) => generateKeySelection(cm, '*'),
   },
 };
 
