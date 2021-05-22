@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import Highlight from 'react-highlight.js';
 
 interface Props {
-  value: string;
+  value?: string;
   language: string;
 }
 
-const CodeBlock: FC<Props> = ({ value, language }) => {
-  return <Highlight language={language}>{value}</Highlight>;
+const CodeBlock: FC<Props> = ({ value, language, children }) => {
+  return <Highlight language={language}>{value ? value : children}</Highlight>;
 };
 
 export default CodeBlock;

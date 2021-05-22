@@ -1,6 +1,5 @@
-import React from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
-import ReactMarkdown from 'react-markdown/with-html';
+import ReactMarkdown from 'react-markdown';
 import classNames from 'classnames';
 
 import CodeBlock from './CodeBlock';
@@ -58,7 +57,7 @@ const WrapCheckBox = (props: any) => {
 };
 
 const modes = ['edit', 'preview', 'both'] as const;
-export type modes = typeof modes[number];
+export type ModesType = typeof modes[number];
 
 const NoteContainer = () => {
   const {
@@ -70,8 +69,8 @@ const NoteContainer = () => {
     handleCodeMirrorChange,
   } = useNote();
 
-  const renderers = {
-    listItem: (props: any): any => {
+  const components = {
+    li: (props: any): any => {
       const { children } = props;
       if (typeof props.checked === 'boolean') {
         const { checked, sourcePosition } = props;
@@ -87,7 +86,12 @@ const NoteContainer = () => {
       }
       return <li>{children}</li>;
     },
-    code: CodeBlock,
+    code({ children, className }: any) {
+      return <CodeBlock
+        language={className || ''}
+        children={children}
+      />
+    }
   };
 
   const isPreviewMode = typingMode === 'preview';
@@ -125,10 +129,10 @@ const NoteContainer = () => {
           {(isPreviewMode || isBothMode) && (
             <div className="react-markdown-container markdown-body">
               <ReactMarkdown
-                renderers={renderers}
-                source={note}
+                children={note}
+                components={components}
                 rawSourcePos
-                escapeHtml={false}
+                // escapeHtml={false}
               />
             </div>
           )}

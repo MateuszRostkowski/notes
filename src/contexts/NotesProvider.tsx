@@ -18,7 +18,7 @@ interface SingeNote {
   value: string;
 }
 
-interface NotesContext {
+interface NotesContextType {
   addNote: (name: string, callback: () => void) => void;
   editNoteName: (noteId: string, name: string, callback: () => void) => void;
   removeNote: (name: string, callback: () => void) => void;
@@ -26,7 +26,7 @@ interface NotesContext {
   currentNote: SingeNote | null;
 }
 
-export const NotesContext = createContext<NotesContext>({
+export const NotesContext = createContext<NotesContextType>({
   addNote: () => {},
   editNoteName: () => {},
   removeNote: () => {},

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { NotesParams } from '../screens/Routes';
-import { modes } from '../components/NoteContainer';
+import { ModesType } from '../components/NoteContainer';
 
 export const TYPING_MODE_KEY = 'typing_mode';
 
@@ -17,7 +17,7 @@ export const useNote = () => {
       ? 'edit'
       : 'both';
 
-  const [typingMode, setTypingMode] = useState<modes>(initialType);
+  const [typingMode, setTypingMode] = useState<ModesType>(initialType);
   const [noteName, setNoteName] = useState('');
 
   useEffect(() => {

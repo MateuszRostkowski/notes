@@ -1,10 +1,10 @@
-import React, { FC, useCallback } from 'react';
-import { modes } from './NoteContainer';
+import { FC, useCallback } from 'react';
+import { ModesType } from './NoteContainer';
 
 interface Props {
-  typingMode: modes;
-  mode: modes;
-  onToggleChange: (mode: modes) => void;
+  typingMode: ModesType;
+  mode: ModesType;
+  onToggleChange: (mode: ModesType) => void;
 }
 
 const ToggleModeButton: FC<Props> = ({ typingMode, mode, onToggleChange }) => {
