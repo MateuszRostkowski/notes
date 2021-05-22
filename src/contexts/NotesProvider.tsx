@@ -38,7 +38,7 @@ interface Props {
   children?: ReactNode;
 }
 
-export function NotesProvider(props: Props) {
+export const NotesProvider: React.FC<Props> = (props) => {
   const [notes, setNotes] = useState<ListNoteItem[]>([]);
   const [currentNote, setCurrentNote] = useState<SingeNote | null>(null);
   const { push } = useHistory();
