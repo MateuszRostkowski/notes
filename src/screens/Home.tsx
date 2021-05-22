@@ -9,7 +9,7 @@ import Empty from '../components/Empty';
 import { useNotes } from '../hooks/useNotes';
 import { NotesParams } from './Routes';
 
-function Home() {
+const Home: React.FC = () =>  {
   const [isError, setIsError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
 

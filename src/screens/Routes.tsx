@@ -8,7 +8,7 @@ export interface NotesParams {
   noteId: string;
 }
 
-export default function Routes() {
+const Routes: React.FC = () => {
   return (
     <Router basename="/">
       <div>
@@ -25,3 +25,5 @@ export default function Routes() {
     </Router>
   );
 }
+
+export default Routes

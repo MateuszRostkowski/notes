@@ -59,7 +59,7 @@ const WrapCheckBox = (props: any) => {
 const modes = ['edit', 'preview', 'both'] as const;
 export type ModesType = typeof modes[number];
 
-const NoteContainer = () => {
+const NoteContainer: React.FC = () => {
   const {
     note,
     setNote,

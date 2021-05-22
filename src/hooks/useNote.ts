@@ -1,11 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { NotesParams } from '../screens/Routes';
 import { ModesType } from '../components/NoteContainer';
 
 export const TYPING_MODE_KEY = 'typing_mode';
 
-export const useNote = () => {
+export const useNote = (): {
+  note: string,
+  setNote: React.Dispatch<React.SetStateAction<string>>,
+  noteName: string,
+  typingMode: ModesType,
+  setTypingMode: React.Dispatch<React.SetStateAction<ModesType>>,
+  handleCodeMirrorChange: (editor: any, data: any, value: string) => void,
+} => {
   const [note, setNote] = useState<string>('');
   const { noteId } = useParams<NotesParams>();
 

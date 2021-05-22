@@ -8,7 +8,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useNotes } from '../hooks/useNotes';
 import { NotesParams } from '../screens/Routes';
 
-const SideBarNotesList = () => {
+const SideBarNotesList: React.FC = () => {
   const { notes } = useNotes();
   const { noteId } = useParams<NotesParams>();
 
@@ -28,7 +28,7 @@ const SideBarNotesList = () => {
   );
 };
 
-function SideBar() {
+const SideBar: React.FC = () =>  {
   const [addMode, setAddMode] = useState(false);
   const [showNotesList, setShowNotesList] = useState(false);
   const sideBarRef = useRef<HTMLDivElement | null>(null);

@@ -18,7 +18,7 @@ interface SingeNote {
   value: string;
 }
 
-interface NotesContextType {
+export interface NotesContextType {
   addNote: (name: string, callback: () => void) => void;
   editNoteName: (noteId: string, name: string, callback: () => void) => void;
   removeNote: (name: string, callback: () => void) => void;
