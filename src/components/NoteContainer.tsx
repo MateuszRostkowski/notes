@@ -140,8 +140,11 @@ const NoteContainer: FC = () => {
       }
       return <li>{children}</li>;
     },
-    code({ children, className }: any) {
-      return <CodeBlock language={className || ''} children={children} />;
+    code({ children, className, ...props }: any) {
+      console.log(props);
+      return (
+        <CodeBlock language={className || ''} children={children} {...props} />
+      );
     },
   };
 
