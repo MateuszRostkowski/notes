@@ -1,34 +1,68 @@
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import ReactMarkdown from 'react-markdown';
 import classNames from 'classnames';
-import { FC } from 'react';
+import { FC, useMemo, useState } from 'react';
 
 import CodeBlock from './CodeBlock';
 import NoteSettings from './NoteSettings';
 import ToggleModeButton from './ToggleModeButton';
 import { useNote } from '../hooks/useNote';
 
-const generateKeySelection = (cm: CodeMirror.Editor, prefix: string) => {
-  const selection = cm.getSelection();
+interface CurrentSelection {
+  editor?: CodeMirror.Editor;
+  data: any;
+}
 
-  if (selection.length > 0) {
-    const match =
-      `${selection.slice(0, 2)}${selection.slice(-2)}` === prefix + prefix;
-    if (match) {
-      cm.replaceSelection(`${selection.slice(2).slice(0, -2)}`);
-    } else {
-      cm.replaceSelection(`${prefix}${selection}${prefix}`);
-    }
+const getSelectionFromRange = (range: any) => {
+  const { head, anchor } = range || {};
+
+  if (head.line <= anchor.line && head.ch >= anchor.ch) {
+    return {
+      startingCursor: anchor,
+      endingCursor: head,
+    };
   }
+
+  return {
+    startingCursor: head,
+    endingCursor: anchor,
+  };
 };
 
-const options: CodeMirror.EditorConfiguration = {
-  mode: 'markdown',
-  autofocus: true,
-  extraKeys: {
-    'Cmd-B': (cm: CodeMirror.Editor) => generateKeySelection(cm, '**'),
-    'Cmd-I': (cm: CodeMirror.Editor) => generateKeySelection(cm, '*'),
-  },
+const generateKeySelection = (
+  cm: CodeMirror.Editor,
+  prefix: string,
+  currentSelection: CurrentSelection,
+) => {
+  const selection = cm.getSelection();
+  const { startingCursor, endingCursor } = getSelectionFromRange(
+    currentSelection.data.ranges[0],
+  );
+  const selectionLength = selection.length;
+  const prefixLength = prefix.length;
+
+  if (selectionLength > 0) {
+    const match =
+      `${selection.slice(0, prefixLength)}${selection.slice(-prefixLength)}` ===
+      prefix + prefix;
+    if (match) {
+      const newEndingCursor = {
+        ...endingCursor,
+        ch: endingCursor.ch - prefixLength * 2,
+      };
+      cm.replaceSelection(
+        `${selection.slice(prefixLength).slice(0, -prefixLength)}`,
+      );
+      cm.setSelection(startingCursor, newEndingCursor);
+    } else {
+      const newEndingCursor = {
+        ...endingCursor,
+        ch: endingCursor.ch + prefixLength * 2,
+      };
+      cm.replaceSelection(`${prefix}${selection}${prefix}`);
+      cm.setSelection(startingCursor, newEndingCursor);
+    }
+  }
 };
 
 const markdownChecked = '- [x]';
@@ -69,6 +103,25 @@ const NoteContainer: FC = () => {
     setTypingMode,
     handleCodeMirrorChange,
   } = useNote();
+
+  const [currentSelection, setCurrentSelection] = useState<CurrentSelection>({
+    editor: undefined,
+    data: undefined,
+  });
+
+  const options: CodeMirror.EditorConfiguration = useMemo(
+    () => ({
+      mode: 'markdown',
+      autofocus: true,
+      extraKeys: {
+        'Cmd-B': (cm: CodeMirror.Editor) =>
+          generateKeySelection(cm, '**', currentSelection),
+        'Cmd-I': (cm: CodeMirror.Editor) =>
+          generateKeySelection(cm, '_', currentSelection),
+      },
+    }),
+    [currentSelection],
+  );
 
   const components = {
     li: (props: any): any => {
@@ -121,6 +174,9 @@ const NoteContainer: FC = () => {
                 value={note}
                 options={options}
                 onBeforeChange={handleCodeMirrorChange}
+                onSelection={(editor, data) =>
+                  setCurrentSelection({ editor, data })
+                }
               />
             </div>
           )}
@@ -130,7 +186,6 @@ const NoteContainer: FC = () => {
                 children={note}
                 components={components}
                 rawSourcePos
-                // escapeHtml={false}
               />
             </div>
           )}
