@@ -4,7 +4,8 @@
   "rules": {
     "@typescript-eslint/no-empty-interface": "error",
     "no-empty-function": "off",
-    "@typescript-eslint/no-empty-function": ["off"]
+    "@typescript-eslint/no-empty-function": ["off"],
+    "@typescript-eslint/ban-ts-comment": ["warn"]
   },
   "extends": ["plugin:@typescript-eslint/recommended"]
 }
