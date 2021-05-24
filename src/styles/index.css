@@ -34,14 +34,14 @@ div#modal-root.shown {
 }
 
 .note-wrapper {
-  max-width: 800px;
+  max-width: 1000px;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .note-wrapper--both {
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
 }
 
