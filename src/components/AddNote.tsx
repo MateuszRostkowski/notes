@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Modal } from './Modal';
 import { useNotes } from '../hooks/useNotes';
-import { toast } from 'react-toastify';
+import { renderSuccesToast, renderErrorToast } from '../helpers/renderToast';
 
 interface AddNoteProps {
   toggleMode: () => void;
@@ -19,15 +19,11 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
   const handleAddNote = useCallback(() => {
     try {
       addNote(name, () => {
-        toast.success('Note added successfuly', {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        renderSuccesToast('Note added successfuly');
         toggleMode();
       });
     } catch (e) {
-      toast.error(e.message, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      renderErrorToast(e.message);
     }
   }, [addNote, name, toggleMode]);
 
@@ -47,6 +43,9 @@ const AddNote: FC<AddNoteProps> = ({ toggleMode }) => {
     e => {
       if (e.keyCode === 13) {
         handleAddNote();
+      }
+      if (e.keyCode === 27) {
+        toggleMode()
       }
     },
     [handleAddNote],

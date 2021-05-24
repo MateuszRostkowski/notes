@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import Cog from '../Cog_font_awesome.svg';
+import { renderSuccesToast, renderErrorToast } from '../helpers/renderToast';
 import { useNotes } from '../hooks/useNotes';
 import { NotesParams } from '../screens/Routes';
 import { Modal } from './Modal';
@@ -24,23 +25,17 @@ const NoteSettings: FC = () => {
   const handleEditNote = useCallback(() => {
     try {
       editNoteName(noteId, name, () => {
-        toast.success('Note name edited successfuly', {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        renderSuccesToast('Note name edited successfuly');
         toggleMode();
       });
     } catch (e) {
-      toast.error(e, {
-        position: toast.POSITION.TOP_LEFT,
-      });
+      renderErrorToast(e);
     }
   }, [editNoteName, name, noteId, toggleMode]);
 
   const handleDeleteNote = useCallback(() => {
     removeNote(noteId, () => {
-      toast.success('Note deleted successfuly', {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      renderSuccesToast('Note deleted successfuly');
     });
   }, [noteId, removeNote]);
 
@@ -56,6 +51,9 @@ const NoteSettings: FC = () => {
     e => {
       if (e.keyCode === 13) {
         handleEditNote();
+      }
+      if (e.keyCode === 27) {
+        toggleMode()
       }
     },
     [handleEditNote],
